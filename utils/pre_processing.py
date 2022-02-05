@@ -13,8 +13,8 @@ def remove_url(text):
 def clean(text):
     text = remove_url(text)
     text = word_tokenize(text)
-    text = [word for word in text if word not in stopwords.words('english')]
     text = [word.lower() for word in text]
+    text = [word for word in text if word not in stopwords.words('english')]
     spell = SpellChecker()
     text = [spell.correction(word) for word in text]
     text = [contractions.fix(word) for word in text]
@@ -22,4 +22,5 @@ def clean(text):
     punctuation_cleaned = [symbol for symbol in punctuation if symbol not in '!#?']
     punctuation_cleaned = ''.join(punctuation_cleaned)
     text = [word for word in text if word not in punctuation_cleaned]
+    print(text)
     return ' '.join(text)

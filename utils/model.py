@@ -5,5 +5,5 @@ import constants
 
 def predict(text):
     prob = settings.MODEL.predict([text], verbose=0).numpy()
-    prob = np.max(prob[:, 0])
+    prob = np.mean(prob[:, 0])
     return prob > constants.CLASSIFICATION_THRESHOLD
