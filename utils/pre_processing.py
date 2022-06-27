@@ -2,7 +2,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from spellchecker import SpellChecker
 from string import punctuation
-import contractions
+# import contractions
 import re
 
 
@@ -17,7 +17,7 @@ def clean(text):
     text = [word for word in text if word not in stopwords.words('english')]
     spell = SpellChecker()
     text = [spell.correction(word) for word in text]
-    text = [contractions.fix(word) for word in text]
+    # text = [contractions.fix(word) for word in text]
     text = ' '.join(text).split(' ')
     punctuation_cleaned = [symbol for symbol in punctuation if symbol not in '!#?']
     punctuation_cleaned = ''.join(punctuation_cleaned)
